@@ -1,25 +1,25 @@
 class Tam < Formula
   desc "A tasks manager cli tool"
   homepage "https://github.com/wst7/tam"
-  version "1.0.13"
+  version "1.0.14"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/wst7/tam/releases/download/v1.0.13/tam-aarch64-apple-darwin.tar.gz"
-      sha256 "19c4671a7489ae9465a966f4e526a5fc14463723b6b881efe9eee0b704657930"
+      url "https://github.com/wst7/tam/releases/download/v1.0.14/tam-aarch64-apple-darwin.tar.gz"
+      sha256 "da3d85f06607c106748522e1c3b20d59f785eab85f123e146c1dd3b147e48729"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/wst7/tam/releases/download/v1.0.13/tam-x86_64-apple-darwin.tar.gz"
-      sha256 "93b36f9c89b0dee95a9abdd982c5dabbab7b1e64f6bee6aef434337ff19be97d"
+      url "https://github.com/wst7/tam/releases/download/v1.0.14/tam-x86_64-apple-darwin.tar.gz"
+      sha256 "de50919497c22e12af0ce72bfa16a2dfaec1ec34046fc57352dd626aee131107"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/wst7/tam/releases/download/v1.0.13/tam-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "fbf0b2cf11b1a2a04c7a89d1589d0b1b8eeb256c606a75e45e2200a276e0f21f"
+      url "https://github.com/wst7/tam/releases/download/v1.0.14/tam-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "c9630023a52ae277d7362a8d6ecc66b1e44f008fe5818eb1f7aadb71731ddf16"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/wst7/tam/releases/download/v1.0.13/tam-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "98e3e5ebb695198ad2460310da76d9a0492096e8d946aaf1dc2a3bc6f7738520"
+      url "https://github.com/wst7/tam/releases/download/v1.0.14/tam-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "aa43ed7d49329e791a51486b74e446798dc4e6d889449f792c3bcb0454f10a4c"
     end
   end
   license any_of: ["MIT", "Apache-2.0"]
@@ -52,10 +52,18 @@ class Tam < Formula
   end
 
   def install
-    bin.install "tam" if OS.mac? && Hardware::CPU.arm?
-    bin.install "tam" if OS.mac? && Hardware::CPU.intel?
-    bin.install "tam" if OS.linux? && Hardware::CPU.arm?
-    bin.install "tam" if OS.linux? && Hardware::CPU.intel?
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "tam"
+    end
+    if OS.mac? && Hardware::CPU.intel?
+      bin.install "tam"
+    end
+    if OS.linux? && Hardware::CPU.arm?
+      bin.install "tam"
+    end
+    if OS.linux? && Hardware::CPU.intel?
+      bin.install "tam"
+    end
 
     install_binary_aliases!
 
